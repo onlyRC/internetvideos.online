@@ -42,25 +42,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: fadeOut 1s 2s forwards;
+            animation: fadeOut 0s 2.5s forwards;
             z-index: 1000;
         }
 
         #main-content {
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 0.5s 3s forwards;
+            opacity: 1;
             position: relative;
         }
 
         .logo {
             width: 400px;
             height: 400px;
-            cursor: pointer;
+            cursor: crosshair;
             user-select: none;
             -webkit-user-drag: none;
             clip-path: circle(50%);
             object-fit: cover;
+        }
+
+        .loading {
+            width: 400px;
+            height: 400px;
+            cursor: crosshair;
+            user-select: none;
+            -webkit-user-drag: none;
+            object-fit: contain;
         }
 
         .title {
@@ -88,8 +96,8 @@
             position: fixed;
             top: 15px;
             left: 15px;
-            z-index: 1001;
-            cursor: pointer;
+            z-index: 999;
+            cursor: crosshair;
         }
         .beta-warning img {
             width: 40px;
@@ -152,7 +160,7 @@
     </div>
 
     <div id="loading">
-        <img src="assets/ivologo.gif" class="logo" draggable="false">
+        <img src="assets/loading.gif" class="loading" draggable="false">
     </div>
 
     <div id="main-content">
