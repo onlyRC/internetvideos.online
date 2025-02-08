@@ -1,11 +1,127 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>IVO</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="index,follow">
-  <link rel="stylesheet" href="./style.css">
-  </head>
-  <body id="id214"><section id="idg1c" class="gjs-section"><div class="gjs-container" id="i7pgp"><img id="ilorf" src="https://file.garden/Yc0wW_tBp0P7hhgA/website%20assets/internetvideosonline/ivologo.gif"/></div></section><div id="idhqf" class="navbar"><div data-gjs="navbar" id="iseu9" class="navbar-container"><a href="" id="iellr" title="" class="navbar-brand">internetvideos.online</a><div id="imx4k" class="navbar-burger"><div class="navbar-burger-line"></div><div class="navbar-burger-line"></div><div class="navbar-burger-line"></div></div><div data-gjs="navbar-items" class="navbar-items-c"><nav class="navbar-menu"><a id="ig1ma" href="creators" class="navbar-menu-link">Creators</a><a id="ib0kj" href="work" class="navbar-menu-link">Work</a></nav></div></div></div></body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0;
+            background-color: black;
+        }
+        
+        .header-section {
+            display: flex;
+            padding: 50px 0;
+        }
+        .header-container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .logo {
+            width: 750px;
+            justify-content: flex-start;
+        }
+        
+        .navbar {
+            background-color: transparent;
+            color: #ddd;
+            min-height: 50px;
+            width: 100%;
+        }
+        .nav-container {
+            max-width: 950px;
+            margin: 0 auto;
+            width: 95%;
+        }
+        .nav-brand {
+            font-size: 40px;
+            color: #3179aa;
+            letter-spacing: 29px;
+            text-decoration: none;
+            padding: 5px;
+            display: inline-block;
+        }
+        .nav-brand:hover {
+            color: #3179aa;
+            text-transform: uppercase;
+            letter-spacing: 21px;
+        }
+        .nav-menu {
+            padding: 10px 0;
+            display: block;
+            float: right;
+            margin: 0;
+        }
+        .nav-link {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: inherit;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 15px;
+        }
+        
+        .burger {
+            display: none;
+            float: right;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 45px;
+            padding: 5px 10px;
+        }
+        .burger-line {
+            padding: 1px;
+            background-color: white;
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-brand { letter-spacing: 16px; }
+            .nav-brand:hover { letter-spacing: 8px; }
+        }
+        @media (max-width: 768px) {
+            .logo { width: 100%; }
+            .nav-menu { display: none; width: 100%; }
+            .nav-link { display: block; }
+            .burger { display: block; }
+            .nav-brand { letter-spacing: 9px; }
+            .nav-brand:hover { letter-spacing: 1px; }
+        }
+        @media (max-width: 480px) {
+            .nav-brand { letter-spacing: -2.5px; }
+            .nav-brand:hover { letter-spacing: -10.5px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="header-section">
+        <div class="header-container">
+            <img class="logo" src="assets/ivologo.gif">
+        </div>
+    </section>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-brand">internetvideos.online</a>
+            
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="https://onlyrc.net" class="nav-link">ONLYRC.NET</a>
+            </div>
+        </div>
+    </nav>
+</body>
 </html>
