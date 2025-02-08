@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>IVO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IV.O</title>
+    <link rel="icon" type="image/x-icon" href="assets/ivologo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
     <style>
-        * { box-sizing: border-box; }
+        * { 
+            box-sizing: border-box;
+        }
+        
         body { 
             margin: 0;
             background-color: black;
+            cursor: crosshair;
+            user-select: none;
         }
         
+        a {
+            cursor: pointer;
+            user-select: auto;
+        }
+
         .header-section {
             display: flex;
             padding: 50px 0;
         }
+
         .header-container {
             width: 90%;
             margin: 0 auto;
@@ -24,22 +38,25 @@
             display: flex;
             justify-content: center;
         }
+
         .logo {
             width: 750px;
             justify-content: flex-start;
         }
-        
+
         .navbar {
             background-color: transparent;
             color: #ddd;
             min-height: 50px;
             width: 100%;
         }
+
         .nav-container {
             max-width: 950px;
             margin: 0 auto;
             width: 95%;
         }
+
         .nav-brand {
             font-size: 40px;
             color: #3179aa;
@@ -48,17 +65,20 @@
             padding: 5px;
             display: inline-block;
         }
+
         .nav-brand:hover {
             color: #3179aa;
             text-transform: uppercase;
             letter-spacing: 21px;
         }
+
         .nav-menu {
             padding: 10px 0;
             display: block;
             float: right;
             margin: 0;
         }
+
         .nav-link {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 20px;
@@ -68,7 +88,7 @@
             display: inline-block;
             padding: 10px 15px;
         }
-        
+
         .burger {
             display: none;
             float: right;
@@ -77,16 +97,18 @@
             width: 45px;
             padding: 5px 10px;
         }
+
         .burger-line {
             padding: 1px;
             background-color: white;
             margin: 5px 0;
         }
-        
+
         @media (max-width: 992px) {
             .nav-brand { letter-spacing: 16px; }
             .nav-brand:hover { letter-spacing: 8px; }
         }
+
         @media (max-width: 768px) {
             .logo { width: 100%; }
             .nav-menu { display: none; width: 100%; }
@@ -95,6 +117,7 @@
             .nav-brand { letter-spacing: 9px; }
             .nav-brand:hover { letter-spacing: 1px; }
         }
+
         @media (max-width: 480px) {
             .nav-brand { letter-spacing: -2.5px; }
             .nav-brand:hover { letter-spacing: -10.5px; }
@@ -104,7 +127,7 @@
 <body>
     <section class="header-section">
         <div class="header-container">
-            <img class="logo" src="assets/ivologo.gif">
+            <img class="logo" src="assets/ivologo.gif" draggable="false">
         </div>
     </section>
 
@@ -123,5 +146,19 @@
             </div>
         </div>
     </nav>
+
+    <script>
+    document.addEventListener('contextmenu', function(e) {
+        if (!e.target.closest('a')) {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('dragstart', function(e) {
+        if (!e.target.closest('a')) {
+            e.preventDefault();
+        }
+    });
+    </script>
 </body>
 </html>
