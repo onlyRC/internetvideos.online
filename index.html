@@ -1,162 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IV.O</title>
     <link rel="icon" type="image/x-icon" href="assets/ivologo.png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index,follow">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { 
-            box-sizing: border-box;
-        }
-        
-        body { 
+        body {
             margin: 0;
+            height: 100vh;
             background-color: black;
-            cursor: crosshair;
-            user-select: none;
-        }
-        
-        a {
-            cursor: pointer;
-            user-select: auto;
-        }
-
-        .header-section {
             display: flex;
-            padding: 50px 0;
-        }
-
-        .header-container {
-            width: 90%;
-            margin: 0 auto;
-            max-width: 1200px;
-            flex: 0 0 auto;
-            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            font-family: 'Times New Roman', Times, serif;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/stars.gif') repeat;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 1s 2s forwards;
+            z-index: 1000;
+        }
+
+        #main-content {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.5s 3s forwards;
+            position: relative;
         }
 
         .logo {
-            width: 600px;
-            justify-content: flex-start;
-        }
-
-        .navbar {
-            background-color: transparent;
-            color: #ddd;
-            min-height: 50px;
-            width: 100%;
-        }
-
-        .nav-container {
-            max-width: 750px;
-            margin: 0 auto;
-            width: 95%;
-        }
-
-        .nav-brand {
-            font-size: 40px;
-            color: #3179aa;
-            letter-spacing: 20px;
-            text-decoration: none;
-            padding: 5px;
-            display: inline-block;
-        }
-
-        .nav-brand:hover {
-            color: #3179aa;
-            text-transform: uppercase;
-            letter-spacing: 11.5px;
-        }
-
-        .nav-menu {
-            padding: 10px 0;
-            display: block;
-            float: right;
-            margin: 0;
-        }
-
-        .nav-link {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: inherit;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 15px;
-        }
-
-        .burger {
-            display: none;
-            float: right;
+            width: 400px;
+            height: 400px;
             cursor: pointer;
-            margin: 10px 0;
-            width: 45px;
-            padding: 5px 10px;
+            user-select: none;
+            -webkit-user-drag: none;
+            clip-path: circle(50%);
+            object-fit: cover;
         }
 
-        .burger-line {
-            padding: 1px;
-            background-color: white;
-            margin: 5px 0;
+        .title {
+            color: #3179aa;
+            margin: 20px 0;
+            transition: 0.2s ease;
         }
 
-        @media (max-width: 992px) {
-            .nav-brand { letter-spacing: 16px; }
-            .nav-brand:hover { letter-spacing: 8px; }
+        .title:hover {
+            text-transform: uppercase;
         }
 
-        @media (max-width: 768px) {
-            .logo { width: 100%; }
-            .nav-menu { display: none; width: 100%; }
-            .nav-link { display: block; }
-            .burger { display: block; }
-            .nav-brand { letter-spacing: 9px; }
-            .nav-brand:hover { letter-spacing: 1px; }
+        .subtitle {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: 0.2s ease;
         }
 
-        @media (max-width: 480px) {
-            .nav-brand { letter-spacing: -2.5px; }
-            .nav-brand:hover { letter-spacing: -10.5px; }
+        .subtitle:hover {
+            text-decoration: underline;
+        }
+
+        .beta-warning {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            cursor: pointer;
+        }
+        .beta-warning img {
+            width: 40px;
+            height: 40px;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+        .beta-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            width: 220px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .beta-warning:hover .beta-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .copyright {
+            position: fixed;
+            bottom: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            width: 100%;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes spin {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
         }
     </style>
 </head>
 <body>
-    <section class="header-section">
-        <div class="header-container">
-            <img class="logo" src="assets/ivologo.gif" draggable="false">
-        </div>
-    </section>
+    <div class="beta-warning" ontouchstart>
+        <img src="assets/construction.gif"
+             draggable="false"
+             oncontextmenu="return false;">
+        <span class="beta-tooltip">This site is currently under construction!</span>
+    </div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a class="nav-brand">internetvideos.online</a>
-            
-            <div class="burger">
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-            </div>
-            
-            <div class="nav-menu">
-                <a href="https://onlyrc.net" class="nav-link">ONLYRC.NET</a>
-            </div>
-        </div>
-    </nav>
+    <div id="loading">
+        <img src="assets/ivologo.gif" class="logo" draggable="false">
+    </div>
+
+    <div id="main-content">
+        <img src="assets/ivologo.gif" class="logo" draggable="false" 
+             onclick="this.style.animation='spin 1s cubic-bezier(0.4, 0, 0.2, 1) 1';"
+             onanimationend="this.style.animation=''">
+        
+        <h1 class="title">internetvideos.online</h1>
+        <a href="https://onlyrc.net" class="subtitle">ONLYRC.NET</a>
+    </div>
+
+    <div class="copyright">
+        &copy; onlyRC 2025
+    </div>
 
     <script>
-    document.addEventListener('contextmenu', function(e) {
-        if (!e.target.closest('a')) {
-            e.preventDefault();
-        }
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.logo').ondragstart = () => false;
 
-    document.addEventListener('dragstart', function(e) {
-        if (!e.target.closest('a')) {
-            e.preventDefault();
-        }
-    });
+            const betaWarning = document.querySelector('.beta-warning');
+            let tooltipVisible = false;
+
+            betaWarning.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                tooltipVisible = !tooltipVisible;
+                this.querySelector('.beta-tooltip').style.visibility = tooltipVisible ? 'visible' : 'hidden';
+                this.querySelector('.beta-tooltip').style.opacity = tooltipVisible ? 1 : 0;
+            });
+
+            document.addEventListener('touchstart', function(e) {
+                if (!betaWarning.contains(e.target)) {
+                    tooltipVisible = false;
+                    betaWarning.querySelector('.beta-tooltip').style.visibility = 'hidden';
+                    betaWarning.querySelector('.beta-tooltip').style.opacity = 0;
+                }
+            });
+        });
     </script>
 </body>
 </html>
